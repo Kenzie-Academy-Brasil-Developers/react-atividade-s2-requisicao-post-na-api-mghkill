@@ -5,6 +5,7 @@ import Input from "../Input";
 import Button from "../Button";
 import Message from "../Message";
 import { MainBox } from "./styles";
+import axios from "axios";
 
 const Login = () => {
   const schema = yup.object().shape({
@@ -20,7 +21,12 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleOnSubmite = (data) => {};
+  const handleOnSubmite = (formData) => {
+    axios
+      .post("https://kenzieshop.herokuapp.com/sessions/", formData)
+      .then((response) => console.log(response.statusText))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <form onSubmit={handleSubmit(handleOnSubmite)}>
