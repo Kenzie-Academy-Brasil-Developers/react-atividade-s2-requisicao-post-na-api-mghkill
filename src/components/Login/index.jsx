@@ -26,6 +26,7 @@ const Login = () => {
     axios
       .post("https://kenzieshop.herokuapp.com/sessions/", formData)
       .then((response) => {
+        console.log(response);
         response.statusText === "OK" &&
           toast.success("Login efetuado com sucesso");
       })
@@ -54,7 +55,7 @@ const Login = () => {
             user={"password"}
           />
 
-          <Button type={"submit"} value={"Enviar"} />
+          <Button type={"submit"}>Enviar</Button>
         </MainBox>
       </form>
     </>
